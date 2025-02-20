@@ -8,7 +8,6 @@ import Footer from "./components/footer";
 import { useState } from "react";
 
 function App() {
-  const [language, setLanguage] = useState<'es' | 'en' | 'ca'>('es');
 
   return (
     <Router>
