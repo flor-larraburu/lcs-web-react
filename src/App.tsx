@@ -5,14 +5,11 @@ import About from "./pages/about";
 import Menu from "./pages/menu";
 import Wines from "./pages/wines";
 import Footer from "./components/footer";
-import { useState } from "react";
 
 function App() {
-
   return (
     <Router>
-       <Navbar 
-    />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
