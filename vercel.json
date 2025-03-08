@@ -1,0 +1,12 @@
+{
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/node",
+        "config": {
+          "installCommand": "npm ci && npm install @rollup/rollup-linux-x64-gnu",
+          "buildCommand": "npm run build"
+        }
+      }
+    ]
+  }
