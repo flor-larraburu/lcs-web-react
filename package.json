@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "install": "npm install --legacy-peer-deps"
+
   },
   "dependencies": {
     "@mantine/core": "^7.17.1",
