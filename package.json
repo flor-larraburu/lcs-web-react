@@ -3,12 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
+"scripts": {
+  "dev": "vite",
+  "preview": "vite preview",
+  "build": "NODE_OPTIONS=\"--max-old-space-size=4096 --disable-native-modules\" tsc -b && vite build"
+
+},
   "dependencies": {
     "@mantine/core": "^7.17.1",
     "@tabler/icons-react": "^3.31.0",
