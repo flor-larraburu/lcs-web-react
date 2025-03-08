@@ -2,12 +2,12 @@
     "builds": [
       {
         "src": "package.json",
-        "use": "@vercel/node",
+        "use": "@vercel/static-build",
         "config": {
           "installCommand": "npm ci && npm install @rollup/rollup-linux-x64-gnu",
-          "buildCommand": "npm run build"
+          "buildCommand": "npm run build",
+          "outputDirectory": "dist"
         }
       }
-    ],
-    "outputDirectory": "dist"
+    ]
   }
