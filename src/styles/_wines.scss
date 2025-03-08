@@ -3,3 +3,30 @@
   padding: 4rem;
   background-color: #f2f2f2;
 }
+// Añadir al archivo main.scss o global.scss
+
+// Asegura que las páginas individuales ocupen todo el espacio disponible
+.page-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  
+  // Añade un min-height para asegurar que la página llene el espacio disponible
+  min-height: calc(100vh - var(--navbar-height) - var(--footer-height) - 4rem); // 4rem es el padding del main-content
+}
+
+// Clase auxiliar para secciones dentro de las páginas
+.section {
+  margin-bottom: 2rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Fix específico para el último elemento de cada página para evitar que
+// sea cubierto por el footer en ciertas circunstancias
+.page-container > *:last-child {
+  margin-bottom: 1rem;
+}

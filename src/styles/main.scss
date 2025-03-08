@@ -293,3 +293,85 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
 }
+.contact-section {
+  text-align: center;
+  padding: 4rem;
+  background-color: (--primary);
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+.sub-title {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  color: #555;
+}
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.map-container {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 1.5rem;
+}
+.map {
+  width: 100%;
+  height: 300px;
+  border: none;
+  border-radius: 8px;
+}
+.contact-info p {
+  margin: 0.5rem 0;
+  color: #666;
+}
+.phone-link {
+  color: #007bff;
+  text-decoration: none;
+}
+.phone-link:hover {
+  text-decoration: underline;
+}
+.schedule {
+  list-style: none;
+  padding: 0;
+}
+.schedule li {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+// Añadir al archivo main.scss o global.scss
+
+// Asegura que las páginas individuales ocupen todo el espacio disponible
+.page-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  
+  // Añade un min-height para asegurar que la página llene el espacio disponible
+  min-height: calc(100vh - var(--navbar-height) - var(--footer-height) - 4rem); // 4rem es el padding del main-content
+}
+
+// Clase auxiliar para secciones dentro de las páginas
+.section {
+  margin-bottom: 2rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Fix específico para el último elemento de cada página para evitar que
+// sea cubierto por el footer en ciertas circunstancias
+.page-container > *:last-child {
+  margin-bottom: 1rem;
+}

@@ -32,7 +32,7 @@ const About = () => {
 
   return (
     <section className="about-section">
-      <div className="about-container">
+      <div className="page-container">
         <h1 className="about-title">{aboutData.aboutTitle}</h1>
         {aboutData.sections.map((section: any, index: number) => (
           <div key={index} className="about-category">

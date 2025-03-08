@@ -5,18 +5,23 @@ import About from "./pages/about";
 import Menu from "./pages/menu";
 import Wines from "./pages/wines";
 import Footer from "./components/footer";
+import "./styles/layout.scss"; // Importamos los estilos de layout
 
 function App() {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/wines" element={<Wines />} />
-      </Routes>
-      <Footer />
+      <div className="app-container">
+        <Navbar />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/wines" element={<Wines />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </Router>
   );
 }
