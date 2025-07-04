@@ -9,7 +9,7 @@ const SEOHead = () => {
     
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.content = "Disfruta de la auténtica gastronomía marinera del Cantábrico en Valencia. Especialidad en lubina salvaje, merluza del Cantábrico y rodaballo.";
+      (metaDesc as HTMLMetaElement).content = "Disfruta de la auténtica gastronomía marinera del Cantábrico en Valencia. Especialidad en lubina salvaje, merluza del Cantábrico y rodaballo.";
     } else {
       const metaElement = document.createElement('meta');
       metaElement.name = "description";
@@ -27,7 +27,7 @@ const images = [
   'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1920&h=1080&fit=crop',
 ];
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
@@ -285,7 +285,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <style jsx>{`
+      <style >{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
         .restaurant-home {

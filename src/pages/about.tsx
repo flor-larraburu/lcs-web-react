@@ -2,8 +2,28 @@ import "../styles/_about.scss";
 import { useEffect, useState } from "react";
 import { ChefHat, Heart, Users, Clock, Star, Award } from 'lucide-react';
 
+interface AboutSection {
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  color: string;
+}
+
+interface AboutStat {
+  number: string;
+  label: string;
+  icon: React.ElementType;
+}
+
+interface AboutData {
+  aboutTitle: string;
+  heroSubtitle: string;
+  sections: AboutSection[];
+  stats: AboutStat[];
+}
+
 const About = () => {
-  const [aboutData, setAboutData] = useState(null);
+  const [aboutData, setAboutData] = useState<AboutData | null>(null);
 
   useEffect(() => {
     // Simulamos la carga del JSON (cuando uses i18n, se sustituirá por el hook correspondiente)
