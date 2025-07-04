@@ -29,7 +29,17 @@ const Navbar = () => {
     >
       <div className="navbar__container">
         <motion.a href="/" className="navbar__brand" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <div className="brand-logo"><div className="logo-circle" /></div>
+<div className="brand-logo">
+  <div className="logo-circle">
+    <img 
+      src="/images/0001.svg" 
+      alt="Logo" 
+      className="logo-image" 
+    />
+  </div>
+</div>
+
+
           <h2 className="navbar-title">La Casita de Sabino</h2>
         </motion.a>
 

@@ -22,8 +22,8 @@ const SEOHead = () => {
 };
 
 const images = [
-  'public/images/DSC02849.JPG',
-  'public/images/DSC02856.JPG',
+  '/images/DSC02849.JPG',
+  '/images/DSC02856.JPG',
 ];
 
 const HomePage: React.FC = () => {
