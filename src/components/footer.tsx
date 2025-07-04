@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Phone, Instagram, Facebook } from 'lucide-react';
 // import './Footer.css';

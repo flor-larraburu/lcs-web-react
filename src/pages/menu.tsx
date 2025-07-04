@@ -1,26 +1,7 @@
-import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Menu, 
-  X, 
-  MapPin, 
-  Mail, 
-  Phone, 
-  Instagram, 
-  Facebook 
-} from 'lucide-react';
+
 
 const RestaurantMenu = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const menuSections = [
     {
@@ -89,12 +70,7 @@ const RestaurantMenu = () => {
     },
   ];
 
-  const navItems = [
-    { href: '/menu', label: 'Carta' },
-    { href: '/wines', label: 'Vinos' },
-    { href: '/about', label: 'Nuestra Historia' },
-    { href: '/contact', label: 'Contacto' }
-  ];
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
