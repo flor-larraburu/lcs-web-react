@@ -1,15 +1,19 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-// import './Navbar.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentPath, setCurrentPath] = useState('/');
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
+
+    // Detecta la ruta actual cuando carga el componente
+    setCurrentPath(window.location.pathname);
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -29,17 +33,15 @@ const Navbar = () => {
     >
       <div className="navbar__container">
         <motion.a href="/" className="navbar__brand" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-<div className="brand-logo">
-  <div className="logo-circle">
-    <img 
-      src="/images/0001.svg" 
-      alt="Logo" 
-      className="logo-image" 
-    />
-  </div>
-</div>
-
-
+          <div className="brand-logo">
+            <div className="logo-circle">
+              <img 
+                src="/images/0001.svg" 
+                alt="Logo" 
+                className="logo-image" 
+              />
+            </div>
+          </div>
           <h2 className="navbar-title">La Casita de Sabino</h2>
         </motion.a>
 
@@ -62,7 +64,7 @@ const Navbar = () => {
             <motion.a 
               key={item.href}
               href={item.href}
-              className={`navbar__link ${item.href === '/menu' ? 'active' : ''}`}
+              className={`navbar__link ${item.href === currentPath ? 'active' : ''}`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsMobileMenuOpen(false)}
