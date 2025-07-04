@@ -1,42 +1,19 @@
-// Navbar.tsx
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import '../styles/_navbar.scss';
+// import './Navbar.css';
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState('/');
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    // Determinar la página actual para el enlace activo
-    const path = window.location.pathname;
-    setActiveLink(path);
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
-    
-    // Evitar scroll cuando el menú móvil está abierto
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      document.body.style.overflow = 'auto';
-    };
-  }, [isMobileMenuOpen]);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const closeMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
-
-  const menuItems = [
+  const navItems = [
     { href: '/menu', label: 'Carta' },
     { href: '/wines', label: 'Vinos' },
     { href: '/about', label: 'Nuestra Historia' },
@@ -44,44 +21,48 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+    <motion.nav 
+      className={`navbar ${isScrolled ? 'scrolled' : ''}`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", stiffness: 100 }}
+    >
       <div className="navbar__container">
-        <a href="/" className="navbar__brand" onClick={() => setActiveLink('/')}>
-          <img src="/images/0001.svg" alt="La casita de sabino" />
-          <h2 className='navbar-title'>La Casita de Sabino</h2>
-        </a>
+        <motion.a href="/" className="navbar__brand" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <div className="brand-logo"><div className="logo-circle" /></div>
+          <h2 className="navbar-title">La Casita de Sabino</h2>
+        </motion.a>
 
-        <button 
+        <motion.button 
           className={`navbar__mobile-toggle ${isMobileMenuOpen ? 'active' : ''}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+          whileTap={{ scale: 0.9 }}
         >
-          <div className="menu-icon">
-            <Menu size={24} />
-          </div>
-          <div className="close-icon">
-            <X size={24} />
-          </div>
-        </button>
+          <motion.div animate={{ rotate: isMobileMenuOpen ? 90 : 0 }} transition={{ duration: 0.3 }}>
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </motion.div>
+        </motion.button>
 
-        <div className={`navbar__links ${isMobileMenuOpen ? 'mobile-active' : ''}`}>
-          {menuItems.map((item, index) => (
-            <a 
+        <motion.div 
+          className={`navbar__links ${isMobileMenuOpen ? 'mobile-active' : ''}`}
+          initial="hidden"
+          animate="visible"
+        >
+          {navItems.map((item) => (
+            <motion.a 
               key={item.href}
-              href={item.href} 
-              className={`navbar__link ${activeLink === item.href ? 'active' : ''}`}
-              onClick={() => {
-                setActiveLink(item.href);
-                closeMenu();
-              }}
-              style={{ '--item-index': index } as React.CSSProperties}
+              href={item.href}
+              className={`navbar__link ${item.href === '/menu' ? 'active' : ''}`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               {item.label}
-            </a>
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

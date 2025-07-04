@@ -1,89 +1,597 @@
-import "../styles/_menu.scss";
-const Menu = () => {
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { 
+  Menu, 
+  X, 
+  MapPin, 
+  Mail, 
+  Phone, 
+  Instagram, 
+  Facebook 
+} from 'lucide-react';
+
+const RestaurantMenu = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const menuSections = [
     {
       title: "Las Entradas de Sabino",
       items: [
-        "GILDA DEL NORTE unidad - 4€",
-        "ANCHOA EN SALAZÓN SOBRE TOSTADA Y SU EMULSIÓN unidad - 4€",
-        "NAVAJA GALLEGA - 20€",
-        "ALMEJAS A LA SARTÉN - 37€",
-        "BERBERECHO GALLEGO - 22€",
-        "OSTRA GALLEGA SUPERIOR unidad - 4.5€",
-        "COLA DE GAMBA ALISTADA AL AJILLO - 14€",
-        "PULPO ASADO CON PURÉ DE PATATAS - 22€",
+        { name: "GILDA DEL NORTE", price: "4€", unit: "unidad" },
+        { name: "ANCHOA EN SALAZÓN SOBRE TOSTADA Y SU EMULSIÓN", price: "4€", unit: "unidad" },
+        { name: "NAVAJA GALLEGA", price: "20€" },
+        { name: "ALMEJAS A LA SARTÉN", price: "37€" },
+        { name: "BERBERECHO GALLEGO", price: "22€" },
+        { name: "OSTRA GALLEGA SUPERIOR", price: "4.5€", unit: "unidad" },
+        { name: "COLA DE GAMBA ALISTADA AL AJILLO", price: "14€" },
+        { name: "PULPO ASADO CON PURÉ DE PATATAS", price: "22€" },
       ],
     },
     {
       title: "Pescados Salvajes",
       items: [
-        "RODABALLO - 85€/Kg",
-        "REY - 140€/Kg",
-        "MERO - 75€/Kg",
-        "MERLUZA DE PINCHO - 60€/Kg",
-        "CABRA DE ALTURA - 66€/Kg",
-        "SAN MARTÍN - 60€/Kg",
-        "MACHOTE - 66€/Kg",
+        { name: "RODABALLO", price: "85€/Kg" },
+        { name: "REY", price: "140€/Kg" },
+        { name: "MERO", price: "75€/Kg" },
+        { name: "MERLUZA DE PINCHO", price: "60€/Kg" },
+        { name: "CABRA DE ALTURA", price: "66€/Kg" },
+        { name: "SAN MARTÍN", price: "60€/Kg" },
+        { name: "MACHOTE", price: "66€/Kg" },
       ],
     },
     {
-      title: "Entrantes de temporada",
+      title: "Entrantes de Temporada",
       items: [
-        "ENSALADA DE BOGAVANTE - 29€",
-        "TOMATE DE LA HUERTA CON VENTRESCA, CEBOLLA TIERNA, MORADA Y PIPARRA - 22€",
-        "TERNERA CON ESENCIA MEDITERRÁNEA - 15€",
-        "MENESTRA DE VERDURAS - 12€",
-        "ALCACHOFAS CON GAMBAS Y SALSA DE CRUSTÁCEOS - 16€",
-        "PIMIENTO DE PIQUILLO RELLENO DE FRUTOS DEL MAR - 4€",
+        { name: "ENSALADA DE BOGAVANTE", price: "29€" },
+        { name: "TOMATE DE LA HUERTA CON VENTRESCA, CEBOLLA TIERNA, MORADA Y PIPARRA", price: "22€" },
+        { name: "TERNERA CON ESENCIA MEDITERRÁNEA", price: "15€" },
+        { name: "MENESTRA DE VERDURAS", price: "12€" },
+        { name: "ALCACHOFAS CON GAMBAS Y SALSA DE CRUSTÁCEOS", price: "16€" },
+        { name: "PIMIENTO DE PIQUILLO RELLENO DE FRUTOS DEL MAR", price: "4€" },
       ],
     },
     {
       title: "Otras Propuestas",
       items: [
-        "HUEVOS CON BOGAVANTE SOBRE PATATAS PAJA - 36€",
-        "BACALAO AJOARRIERO O PIL-PIL - 30€",
-        "KOKOTXAS DE MERLUZA AL PIL-PIL - 36€",
-        "SEPIA SOBRE TERCIOPELO DE HUMMUS - 15€",
-        "SALMÓN AHUMADO SOBRE MANTO DE BETABEL Y YOGUR GRIEGO - 15€",
-        "SOPA DE PESCADO - 16€",
+        { name: "HUEVOS CON BOGAVANTE SOBRE PATATAS PAJA", price: "36€" },
+        { name: "BACALAO AJOARRIERO O PIL-PIL", price: "30€" },
+        { name: "KOKOTXAS DE MERLUZA AL PIL-PIL", price: "36€" },
+        { name: "SEPIA SOBRE TERCIOPELO DE HUMMUS", price: "15€" },
+        { name: "SALMÓN AHUMADO SOBRE MANTO DE BETABEL Y YOGUR GRIEGO", price: "15€" },
+        { name: "SOPA DE PESCADO", price: "16€" },
       ],
     },
     {
       title: "Carnes",
       items: [
-        "SOLOMILLO CON SALSA DE NATA Y SETAS, Y PURÉ DE PATATAS - 24€",
-        "STEAK TARTAR - 24€",
-        "COCHINILLO CONFITADO A LA VAINILLA, SOBRE PURÉ DE MANZANA - 22€",
+        { name: "SOLOMILLO CON SALSA DE NATA Y SETAS, Y PURÉ DE PATATAS", price: "24€" },
+        { name: "STEAK TARTAR", price: "24€" },
+        { name: "COCHINILLO CONFITADO A LA VAINILLA, SOBRE PURÉ DE MANZANA", price: "22€" },
       ],
     },
     {
       title: "Guarniciones",
       items: [
-        "PATATAS FRITAS - 7€",
-        "PIMIENTOS ROJOS ASADOS - 7€",
-        "VERDURAS SALTEADAS CON SALSA MERY - 7€",
-        "SERVICIO DE PAN (por comensal) - 3€",
+        { name: "PATATAS FRITAS", price: "7€" },
+        { name: "PIMIENTOS ROJOS ASADOS", price: "7€" },
+        { name: "VERDURAS SALTEADAS CON SALSA MERY", price: "7€" },
+        { name: "SERVICIO DE PAN (por comensal)", price: "3€" },
       ],
     },
   ];
 
+  const navItems = [
+    { href: '/menu', label: 'Carta' },
+    { href: '/wines', label: 'Vinos' },
+    { href: '/about', label: 'Nuestra Historia' },
+    { href: '/contact', label: 'Contacto' }
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100
+      }
+    }
+  };
+
   return (
-    <section className="menu-section">
-      <div className="menu-container">
-        <h1 className="menu-title">Nuestra Carta</h1>
-        {menuSections.map((section, index) => (
-          <div key={index} className="menu-category">
-            <h2 className="category-title">{section.title}</h2>
-            <ul className="menu-list">
-              {section.items.map((item, idx) => (
-                <li key={idx} className="menu-item">{item}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </section>
+    <div className="restaurant-app">
+ 
+
+      {/* Menu Section */}
+      <motion.section 
+        className="menu-section"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="menu-container">
+          <motion.h1 
+            className="menu-title"
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 100,
+              delay: 0.2 
+            }}
+          >
+            Nuestra Carta
+          </motion.h1>
+          
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {menuSections.map((section, sectionIndex) => (
+              <motion.div 
+                key={sectionIndex} 
+                className="menu-category"
+                variants={itemVariants}
+                whileHover={{ 
+                  y: -5,
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <motion.h2 
+                  className="category-title"
+                  initial={{ x: -50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ 
+                    delay: sectionIndex * 0.1,
+                    type: "spring",
+                    stiffness: 100
+                  }}
+                >
+                  {section.title}
+                </motion.h2>
+                
+                <motion.div 
+                  className="menu-list"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {section.items.map((item, itemIndex) => (
+                    <motion.div 
+                      key={itemIndex} 
+                      className="menu-item"
+                      variants={itemVariants}
+                      whileHover={{ 
+                        x: 10,
+                        transition: { duration: 0.3 }
+                      }}
+                    >
+                      <div className="menu-item-content">
+                        <div className="menu-item-name">{item.name}</div>
+                        <div className="menu-item-price">
+                          {item.price} {item.unit && <span className="unit">{item.unit}</span>}
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
+ 
+
+      <style jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+        .restaurant-app {
+          --primary: #1e3a5f;
+          --accent: #4a90a4;
+          --light-accent: #87ceeb;
+          --text-primary: #2c3e50;
+          --text-secondary: #64748b;
+          --background: #fefefe;
+          --light-bg: #f8fafc;
+          --dark-bg: #1a2332;
+          --border: #e2e8f0;
+          --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+          --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+          
+          min-height: 100vh;
+          background-color: var(--background);
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          color: var(--text-primary);
+          line-height: 1.6;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(10px);
+          z-index: 1000;
+          transition: all 0.3s ease;
+          border-bottom: 1px solid var(--border);
+        }
+
+        .navbar.scrolled {
+          background: rgba(255, 255, 255, 0.98);
+          box-shadow: var(--shadow);
+        }
+
+        .navbar__container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 2rem;
+        }
+
+        .navbar__brand {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          gap: 0.75rem;
+        }
+
+        .brand-logo {
+          position: relative;
+          width: 40px;
+          height: 40px;
+        }
+
+        .logo-circle {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background: linear-gradient(135deg, var(--accent), var(--primary));
+          position: relative;
+        }
+
+        .logo-circle::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 20px;
+          height: 20px;
+          background: white;
+          border-radius: 50%;
+        }
+
+        .navbar-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.5rem;
+          font-weight: 400;
+          color: var(--primary);
+          margin: 0;
+        }
+
+        .navbar__mobile-toggle {
+          display: none;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0.5rem;
+          color: var(--primary);
+        }
+
+        .navbar__links {
+          display: flex;
+          gap: 2rem;
+        }
+
+        .navbar__link {
+          text-decoration: none;
+          color: var(--text-primary);
+          font-weight: 500;
+          transition: color 0.3s ease;
+          position: relative;
+        }
+
+        .navbar__link:hover,
+        .navbar__link.active {
+          color: var(--accent);
+        }
+
+        .navbar__link::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: var(--accent);
+          transition: width 0.3s ease;
+        }
+
+        .navbar__link:hover::after,
+        .navbar__link.active::after {
+          width: 100%;
+        }
+
+        /* Menu Section */
+        .menu-section {
+          padding: 8rem 0 4rem;
+          background: var(--light-bg);
+          min-height: 100vh;
+        }
+
+        .menu-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
+        .menu-title {
+          font-family: 'Playfair Display', serif;
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          font-weight: 300;
+          color: var(--primary);
+          text-align: center;
+          margin-bottom: 3rem;
+          position: relative;
+        }
+
+        .menu-title::after {
+          content: '';
+          position: absolute;
+          bottom: -1rem;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 4rem;
+          height: 2px;
+          background: var(--accent);
+          border-radius: 1px;
+        }
+
+        .menu-category {
+          margin-bottom: 4rem;
+          background: white;
+          border-radius: 16px;
+          padding: 3rem;
+          box-shadow: var(--shadow);
+          border: 1px solid var(--border);
+          transition: all 0.3s ease;
+        }
+
+        .category-title {
+          font-family: 'Playfair Display', serif;
+          font-size: clamp(1.5rem, 3vw, 2rem);
+          font-weight: 500;
+          color: var(--primary);
+          margin-bottom: 2rem;
+          text-align: center;
+          position: relative;
+        }
+
+        .category-title::after {
+          content: '';
+          position: absolute;
+          bottom: -0.5rem;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 2rem;
+          height: 1px;
+          background: var(--light-accent);
+        }
+
+        .menu-list {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 1.5rem;
+        }
+
+        .menu-item {
+          padding: 1.5rem;
+          background: var(--light-bg);
+          border-radius: 12px;
+          border-left: 4px solid var(--accent);
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .menu-item::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, transparent 0%, rgba(74, 144, 164, 0.02) 100%);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .menu-item:hover::before {
+          opacity: 1;
+        }
+
+        .menu-item-content {
+          position: relative;
+          z-index: 1;
+        }
+
+        .menu-item-name {
+          font-weight: 600;
+          color: var(--text-primary);
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
+          line-height: 1.4;
+        }
+
+        .menu-item-price {
+          font-weight: 700;
+          color: var(--accent);
+          font-size: 1.1rem;
+        }
+
+        .unit {
+          font-size: 0.9rem;
+          font-weight: 500;
+          color: var(--text-secondary);
+        }
+
+        /* Footer Styles */
+        .footer {
+          background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary) 100%);
+          color: white;
+          padding: 3rem 0 1rem;
+        }
+
+        .footer__container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 2rem;
+          align-items: start;
+        }
+
+        .footer__text {
+          margin-bottom: 0.5rem;
+          color: rgba(255, 255, 255, 0.9);
+          display: flex;
+          align-items: center;
+        }
+
+        .footer__link {
+          color: var(--light-accent);
+          text-decoration: none;
+          transition: color 0.3s ease;
+          display: flex;
+          align-items: center;
+        }
+
+        .footer__link:hover {
+          color: white;
+        }
+
+        .footer__social {
+          display: flex;
+          gap: 1rem;
+        }
+
+        .footer__icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 50%;
+          color: var(--light-accent);
+          text-decoration: none;
+          transition: all 0.3s ease;
+        }
+
+        .footer__icon:hover {
+          background: var(--light-accent);
+          color: var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .navbar__mobile-toggle {
+            display: block;
+          }
+
+          .navbar__links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            flex-direction: column;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border-top: 1px solid var(--border);
+          }
+
+          .navbar__links.mobile-active {
+            display: flex;
+          }
+
+          .menu-section {
+            padding: 6rem 0 3rem;
+          }
+
+          .menu-container {
+            padding: 0 1rem;
+          }
+
+          .menu-category {
+            padding: 2rem;
+          }
+
+          .menu-list {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+
+          .menu-item {
+            padding: 1rem;
+          }
+
+          .footer__container {
+            grid-template-columns: 1fr;
+            text-align: center;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .navbar__container {
+            padding: 1rem;
+          }
+
+          .menu-title {
+            font-size: 2rem;
+          }
+
+          .category-title {
+            font-size: 1.5rem;
+          }
+
+          .menu-category {
+            padding: 1.5rem;
+          }
+        }
+      `}</style>
+    </div>
   );
 };
 
-export default Menu;
+export default RestaurantMenu;

@@ -1,11 +1,6 @@
 // Archivo: styles/layout.scss
 
-// Variables con las alturas de navbar y footer
-:root {
-    --navbar-height: 120px; // Ajusta según la altura real de tu navbar
-    --footer-height: 76px;  // Ajusta según la altura real de tu footer
-  }
-  
+
   html, body {
     height: 100%;
     margin: 0;
@@ -29,7 +24,6 @@
   .main-content {
     flex: 1;
     width: 100%;
-    padding: 2rem 0;
     box-sizing: border-box;
     
     // Calculamos automáticamente el min-height para asegurar que ocupe el espacio disponible
