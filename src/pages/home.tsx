@@ -22,9 +22,8 @@ const SEOHead = () => {
 };
 
 const images = [
-  'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=1080&fit=crop',
-  'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1920&h=1080&fit=crop',
-  'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1920&h=1080&fit=crop',
+  'public/images/DSC02849.JPG',
+  'public/images/DSC02856.JPG',
 ];
 
 const HomePage: React.FC = () => {
@@ -83,9 +82,7 @@ const HomePage: React.FC = () => {
             variants={staggerChildren}
             className="hero-text"
           >
-            <motion.div variants={fadeInUp} className="hero-icon">
-              <Waves className="wave-icon" />
-            </motion.div>
+         
             <motion.h1 variants={fadeInUp} className="hero-title">
               La esencia del <span className="accent-text">Cantábrico</span>
             </motion.h1>
@@ -362,25 +359,20 @@ const HomePage: React.FC = () => {
           gap: 1.5rem;
         }
 
-        .hero-icon {
-          opacity: 0.8;
-        }
 
-        .wave-icon {
-          width: 3rem;
-          height: 3rem;
-          color: var(--accent);
-        }
 
-        .hero-title {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(2.5rem, 6vw, 4.5rem);
-          font-weight: 300;
-          color: var(--primary);
-          line-height: 1.1;
-          margin: 0;
-          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+  .hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 300;
+  color: var(--primary);
+  line-height: 1.1;
+  margin: 0;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
 
         .hero-subtitle {
           font-size: clamp(1.2rem, 3vw, 1.6rem);
