@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { BookOpen, Wine, Phone, MapPin, Clock, Waves } from 'lucide-react';
+import { BookOpen, Wine, Phone, MapPin, Clock } from 'lucide-react';
 
 // Custom SEO component
 const SEOHead = () => {
