@@ -8,11 +8,6 @@
     overflow-x: hidden;
   }
   
-  body {
-    // Añade padding-top para el navbar fijo y padding-bottom para el footer fijo
-    padding-top: var(--navbar-height);
-    padding-bottom: var(--footer-height);
-  }
   
   .app-container {
     min-height: 100vh;
