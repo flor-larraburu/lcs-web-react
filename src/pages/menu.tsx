@@ -183,7 +183,7 @@ const menuSections = [
           padding: 8rem 0 4rem;
           background: var(--light-bg);
           min-height: 100vh;
-          font-family: 'Montserrat', sans-serif;
+          font-family: 'Playfair Display', serif;
           color: var(--text-primary);
         }
 
