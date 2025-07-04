@@ -1,6 +1,6 @@
 import "../styles/_about.scss";
 import { useEffect, useState } from "react";
-import { ChefHat, Heart, Users, Clock, Star, Award } from 'lucide-react';
+import { ChefHat, Heart, Users, Clock, Star } from 'lucide-react';
 
 interface AboutSection {
   title: string;
@@ -33,28 +33,30 @@ const About = () => {
       sections: [
         {
           title: "Nuestra Filosofía",
-          description: "Creemos en la calidad de los ingredientes, en el respeto por las recetas tradicionales y en la magia de compartir una buena comida. Trabajamos con productos frescos y de temporada, seleccionados con el mayor cuidado para ofrecerte una experiencia única en cada bocado.",
+          description:
+            "Creemos en la calidad de los ingredientes, en el respeto por las recetas tradicionales y en la magia de compartir una buena comida. Trabajamos con productos frescos y de temporada, seleccionados con el mayor cuidado para ofrecerte una experiencia única en cada bocado.",
           icon: Heart,
           color: "from-rose-400 to-red-500"
         },
         {
           title: "El Equipo",
-          description: "Detrás de cada plato hay un equipo apasionado por la cocina y el servicio. Desde nuestros chefs hasta el personal de sala, cada miembro de nuestro equipo comparte el compromiso de hacerte sentir como en casa, ofreciendo un trato cálido y cercano.",
+          description:
+            "Detrás de cada plato hay un equipo comprometido con la excelencia. Nuestro personal combina experiencia y pasión para ofrecerte un servicio cálido y cercano, creando un ambiente donde te sientas como en casa.",
           icon: Users,
           color: "from-blue-400 to-indigo-500"
         },
         {
           title: "Un Espacio Para Disfrutar",
-          description: "Nuestro restaurante es más que un lugar para comer; es un punto de encuentro donde los sabores se mezclan con las historias. Un ambiente acogedor, una carta pensada para sorprender y un equipo listo para hacer de tu visita una experiencia inolvidable.",
+          description:
+            "Nuestro restaurante es un lugar para conectar, disfrutar y crear recuerdos. Ofrecemos un ambiente acogedor, una carta cuidadosamente elaborada y una atención personalizada para que cada visita sea especial.",
           icon: Star,
           color: "from-amber-400 to-orange-500"
         },
       ],
       stats: [
-        { number: "15+", label: "Años de Experiencia", icon: Clock },
-        { number: "500+", label: "Clientes Satisfechos", icon: Users },
-        { number: "3", label: "Premios Gastronómicos", icon: Award },
-        { number: "100%", label: "Ingredientes Frescos", icon: ChefHat }
+        { number: "15+", label: "Años de experiencia", icon: Clock },
+        { number: "100%", label: "Ingredientes frescos y de temporada", icon: ChefHat },
+        { number: "Equipo", label: "Apasionado y dedicado", icon: Users }
       ]
     });
   }, []);
@@ -78,9 +80,7 @@ const About = () => {
           <div className="hero-icon">
             <ChefHat className="icon" />
           </div>
-          <h1 className="hero-title">
-            {aboutData.aboutTitle}
-          </h1>
+          <h1 className="hero-title">{aboutData.aboutTitle}</h1>
           <p className="hero-subtitle">
             <span className="accent-text">{aboutData.heroSubtitle}</span>
           </p>

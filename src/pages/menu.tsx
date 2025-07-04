@@ -1,75 +1,73 @@
 import { motion } from 'framer-motion';
 
-
 const RestaurantMenu = () => {
 
-  const menuSections = [
-    {
-      title: "Las Entradas de Sabino",
-      items: [
-        { name: "GILDA DEL NORTE", price: "4€", unit: "unidad" },
-        { name: "ANCHOA EN SALAZÓN SOBRE TOSTADA Y SU EMULSIÓN", price: "4€", unit: "unidad" },
-        { name: "NAVAJA GALLEGA", price: "20€" },
-        { name: "ALMEJAS A LA SARTÉN", price: "37€" },
-        { name: "BERBERECHO GALLEGO", price: "22€" },
-        { name: "OSTRA GALLEGA SUPERIOR", price: "4.5€", unit: "unidad" },
-        { name: "COLA DE GAMBA ALISTADA AL AJILLO", price: "14€" },
-        { name: "PULPO ASADO CON PURÉ DE PATATAS", price: "22€" },
-      ],
-    },
-    {
-      title: "Pescados Salvajes",
-      items: [
-        { name: "RODABALLO", price: "85€/Kg" },
-        { name: "REY", price: "140€/Kg" },
-        { name: "MERO", price: "75€/Kg" },
-        { name: "MERLUZA DE PINCHO", price: "60€/Kg" },
-        { name: "CABRA DE ALTURA", price: "66€/Kg" },
-        { name: "SAN MARTÍN", price: "60€/Kg" },
-        { name: "MACHOTE", price: "66€/Kg" },
-      ],
-    },
-    {
-      title: "Entrantes de Temporada",
-      items: [
-        { name: "ENSALADA DE BOGAVANTE", price: "29€" },
-        { name: "TOMATE DE LA HUERTA CON VENTRESCA, CEBOLLA TIERNA, MORADA Y PIPARRA", price: "22€" },
-        { name: "TERNERA CON ESENCIA MEDITERRÁNEA", price: "15€" },
-        { name: "MENESTRA DE VERDURAS", price: "12€" },
-        { name: "ALCACHOFAS CON GAMBAS Y SALSA DE CRUSTÁCEOS", price: "16€" },
-        { name: "PIMIENTO DE PIQUILLO RELLENO DE FRUTOS DEL MAR", price: "4€" },
-      ],
-    },
-    {
-      title: "Otras Propuestas",
-      items: [
-        { name: "HUEVOS CON BOGAVANTE SOBRE PATATAS PAJA", price: "36€" },
-        { name: "BACALAO AJOARRIERO O PIL-PIL", price: "30€" },
-        { name: "KOKOTXAS DE MERLUZA AL PIL-PIL", price: "36€" },
-        { name: "SEPIA SOBRE TERCIOPELO DE HUMMUS", price: "15€" },
-        { name: "SALMÓN AHUMADO SOBRE MANTO DE BETABEL Y YOGUR GRIEGO", price: "15€" },
-        { name: "SOPA DE PESCADO", price: "16€" },
-      ],
-    },
-    {
-      title: "Carnes",
-      items: [
-        { name: "SOLOMILLO CON SALSA DE NATA Y SETAS, Y PURÉ DE PATATAS", price: "24€" },
-        { name: "STEAK TARTAR", price: "24€" },
-        { name: "COCHINILLO CONFITADO A LA VAINILLA, SOBRE PURÉ DE MANZANA", price: "22€" },
-      ],
-    },
-    {
-      title: "Guarniciones",
-      items: [
-        { name: "PATATAS FRITAS", price: "7€" },
-        { name: "PIMIENTOS ROJOS ASADOS", price: "7€" },
-        { name: "VERDURAS SALTEADAS CON SALSA MERY", price: "7€" },
-        { name: "SERVICIO DE PAN (por comensal)", price: "3€" },
-      ],
-    },
-  ];
-
+const menuSections = [
+  {
+    title: "Las entradas de sabino",
+    items: [
+      { name: "Gilda del norte", price: "4€", unit: "unidad" },
+      { name: "Anchoa en salazón sobre tostada y su emulsión", price: "4€", unit: "unidad" },
+      { name: "Navaja gallega", price: "20€" },
+      { name: "Almejas a la sartén", price: "37€" },
+      { name: "Berberecho gallego", price: "22€" },
+      { name: "Ostra gallega superior", price: "4.5€", unit: "unidad" },
+      { name: "Cola de gamba alistada al ajillo", price: "14€" },
+      { name: "Pulpo asado con puré de patatas", price: "22€" },
+    ],
+  },
+  {
+    title: "Pescados salvajes",
+    items: [
+      { name: "Rodaballo", price: "85€/kg" },
+      { name: "Rey", price: "140€/kg" },
+      { name: "Mero", price: "75€/kg" },
+      { name: "Merluza de pincho", price: "60€/kg" },
+      { name: "Cabra de altura", price: "66€/kg" },
+      { name: "San martín", price: "60€/kg" },
+      { name: "Machote", price: "66€/kg" },
+    ],
+  },
+  {
+    title: "Entrantes de temporada",
+    items: [
+      { name: "Ensalada de bogavante", price: "29€" },
+      { name: "Tomate de la huerta con ventresca, cebolla tierna, morada y piparra", price: "22€" },
+      { name: "Ternera con esencia mediterránea", price: "15€" },
+      { name: "Menestra de verduras", price: "12€" },
+      { name: "Alcachofas con gambas y salsa de crustáceos", price: "16€" },
+      { name: "Pimiento de piquillo relleno de frutos del mar", price: "4€" },
+    ],
+  },
+  {
+    title: "Otras propuestas",
+    items: [
+      { name: "Huevos con bogavante sobre patatas paja", price: "36€" },
+      { name: "Bacalao ajoarriero o pil-pil", price: "30€" },
+      { name: "Kokotxas de merluza al pil-pil", price: "36€" },
+      { name: "Sepia sobre terciopelo de hummus", price: "15€" },
+      { name: "Salmón ahumado sobre manto de betabel y yogur griego", price: "15€" },
+      { name: "Sopa de pescado", price: "16€" },
+    ],
+  },
+  {
+    title: "Carnes",
+    items: [
+      { name: "Solomillo con salsa de nata y setas, y puré de patatas", price: "24€" },
+      { name: "Steak tartar", price: "24€" },
+      { name: "Cochinillo confitado a la vainilla, sobre puré de manzana", price: "22€" },
+    ],
+  },
+  {
+    title: "Guarniciones",
+    items: [
+      { name: "Patatas fritas", price: "7€" },
+      { name: "Pimientos rojos asados", price: "7€" },
+      { name: "Verduras salteadas con salsa mery", price: "7€" },
+      { name: "Servicio de pan (por comensal)", price: "3€" },
+    ],
+  },
+];
 
 
   const containerVariants = {
@@ -97,9 +95,7 @@ const RestaurantMenu = () => {
 
   return (
     <div className="restaurant-app">
- 
 
-      {/* Menu Section */}
       <motion.section 
         className="menu-section"
         initial={{ opacity: 0 }}
@@ -117,7 +113,7 @@ const RestaurantMenu = () => {
               delay: 0.2 
             }}
           >
-            Nuestra Carta
+            Nuestra carta
           </motion.h1>
           
           <motion.div
@@ -179,15 +175,16 @@ const RestaurantMenu = () => {
         </div>
       </motion.section>
 
- 
+      <style>{`
+  
 
-      <style >{`
-     
         /* Menu Section */
         .menu-section {
           padding: 8rem 0 4rem;
           background: var(--light-bg);
           min-height: 100vh;
+          font-family: 'Montserrat', sans-serif;
+          color: var(--text-primary);
         }
 
         .menu-container {
@@ -231,11 +228,12 @@ const RestaurantMenu = () => {
         .category-title {
           font-family: 'Playfair Display', serif;
           font-size: clamp(1.5rem, 3vw, 2rem);
-          font-weight: 500;
+          font-weight: 400;
           color: var(--primary);
           margin-bottom: 2rem;
           text-align: center;
           position: relative;
+          letter-spacing: 0.05em;
         }
 
         .category-title::after {
@@ -263,6 +261,9 @@ const RestaurantMenu = () => {
           transition: all 0.3s ease;
           position: relative;
           overflow: hidden;
+          font-weight: 300;
+          color: var(--text-secondary);
+          font-size: 0.95rem;
         }
 
         .menu-item::before {
@@ -272,7 +273,7 @@ const RestaurantMenu = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(135deg, transparent 0%, rgba(74, 144, 164, 0.02) 100%);
+          background: linear-gradient(135deg, transparent 0%, rgba(39, 174, 96, 0.05) 100%);
           opacity: 0;
           transition: opacity 0.3s ease;
         }
@@ -287,11 +288,12 @@ const RestaurantMenu = () => {
         }
 
         .menu-item-name {
-          font-weight: 600;
+          font-weight: 500;
           color: var(--text-primary);
           font-size: 1rem;
           margin-bottom: 0.5rem;
           line-height: 1.4;
+          letter-spacing: 0.03em;
         }
 
         .menu-item-price {
@@ -301,119 +303,25 @@ const RestaurantMenu = () => {
         }
 
         .unit {
-          font-size: 0.9rem;
-          font-weight: 500;
+          font-size: 0.85rem;
+          font-weight: 400;
           color: var(--text-secondary);
+          margin-left: 0.3rem;
+          font-style: italic;
         }
 
-        /* Footer Styles */
-        .footer {
-          background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary) 100%);
-          color: white;
-          padding: 3rem 0 1rem;
-        }
-
-        .footer__container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 2rem;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 2rem;
-          align-items: start;
-        }
-
-        .footer__text {
-          margin-bottom: 0.5rem;
-          color: rgba(255, 255, 255, 0.9);
-          display: flex;
-          align-items: center;
-        }
-
-        .footer__link {
-          color: var(--light-accent);
-          text-decoration: none;
-          transition: color 0.3s ease;
-          display: flex;
-          align-items: center;
-        }
-
-        .footer__link:hover {
-          color: white;
-        }
-
-        .footer__social {
-          display: flex;
-          gap: 1rem;
-        }
-
-        .footer__icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 40px;
-          height: 40px;
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 50%;
-          color: var(--light-accent);
-          text-decoration: none;
-          transition: all 0.3s ease;
-        }
-
-        .footer__icon:hover {
-          background: var(--light-accent);
-          color: var(--primary);
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-          .navbar__mobile-toggle {
-            display: block;
+          .menu-list {
+            grid-template-columns: 1fr;
           }
-
-    
-          .menu-section {
-            padding: 6rem 0 3rem;
-          }
-
-          .menu-container {
-            padding: 0 1rem;
-          }
-
           .menu-category {
             padding: 2rem;
           }
-
-          .menu-list {
-            grid-template-columns: 1fr;
-            gap: 1rem;
-          }
-
-          .menu-item {
-            padding: 1rem;
-          }
-
-          .footer__container {
-            grid-template-columns: 1fr;
-            text-align: center;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .navbar__container {
-            padding: 1rem;
-          }
-
           .menu-title {
-            font-size: 2rem;
+            font-size: 2.5rem;
           }
-
           .category-title {
             font-size: 1.5rem;
-          }
-
-          .menu-category {
-            padding: 1.5rem;
           }
         }
       `}</style>
