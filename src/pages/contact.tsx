@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Phone, MapPin, Clock, Mail, MessageCircle, Star, ChefHat } from 'lucide-react';
+import { Phone, MapPin, Clock,  MessageCircle, Star, ChefHat } from 'lucide-react';
 
 const ContactSection = () => {
   const fadeInUp = {
