@@ -6,6 +6,7 @@ import Menu from "./pages/menu";
 import Wines from "./pages/wines";
 import Footer from "./components/footer";
 import "./styles/layout.scss"; // Importamos los estilos de layout
+import ContactSection from "./pages/contact";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/wines" element={<Wines />} />
+            <Route path="/contact" element={<ContactSection />} />
           </Routes>
         </main>
         <Footer />

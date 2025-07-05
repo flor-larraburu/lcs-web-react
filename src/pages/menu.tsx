@@ -1,74 +1,85 @@
 import { motion } from 'framer-motion';
+import '../styles/_menu.scss'; // Importing the SCSS styles
 
 const RestaurantMenu = () => {
-
-const menuSections = [
-  {
-    title: "Las entradas de sabino",
-    items: [
-      { name: "Gilda del norte", price: "4€", unit: "unidad" },
-      { name: "Anchoa en salazón sobre tostada y su emulsión", price: "4€", unit: "unidad" },
-      { name: "Navaja gallega", price: "20€" },
-      { name: "Almejas a la sartén", price: "37€" },
-      { name: "Berberecho gallego", price: "22€" },
-      { name: "Ostra gallega superior", price: "4.5€", unit: "unidad" },
-      { name: "Cola de gamba alistada al ajillo", price: "14€" },
-      { name: "Pulpo asado con puré de patatas", price: "22€" },
-    ],
-  },
-  {
-    title: "Pescados salvajes",
-    items: [
-      { name: "Rodaballo", price: "85€/kg" },
-      { name: "Rey", price: "140€/kg" },
-      { name: "Mero", price: "75€/kg" },
-      { name: "Merluza de pincho", price: "60€/kg" },
-      { name: "Cabra de altura", price: "66€/kg" },
-      { name: "San martín", price: "60€/kg" },
-      { name: "Machote", price: "66€/kg" },
-    ],
-  },
-  {
-    title: "Entrantes de temporada",
-    items: [
-      { name: "Ensalada de bogavante", price: "29€" },
-      { name: "Tomate de la huerta con ventresca, cebolla tierna, morada y piparra", price: "22€" },
-      { name: "Ternera con esencia mediterránea", price: "15€" },
-      { name: "Menestra de verduras", price: "12€" },
-      { name: "Alcachofas con gambas y salsa de crustáceos", price: "16€" },
-      { name: "Pimiento de piquillo relleno de frutos del mar", price: "4€" },
-    ],
-  },
-  {
-    title: "Otras propuestas",
-    items: [
-      { name: "Huevos con bogavante sobre patatas paja", price: "36€" },
-      { name: "Bacalao ajoarriero o pil-pil", price: "30€" },
-      { name: "Kokotxas de merluza al pil-pil", price: "36€" },
-      { name: "Sepia sobre terciopelo de hummus", price: "15€" },
-      { name: "Salmón ahumado sobre manto de betabel y yogur griego", price: "15€" },
-      { name: "Sopa de pescado", price: "16€" },
-    ],
-  },
-  {
-    title: "Carnes",
-    items: [
-      { name: "Solomillo con salsa de nata y setas, y puré de patatas", price: "24€" },
-      { name: "Steak tartar", price: "24€" },
-      { name: "Cochinillo confitado a la vainilla, sobre puré de manzana", price: "22€" },
-    ],
-  },
-  {
-    title: "Guarniciones",
-    items: [
-      { name: "Patatas fritas", price: "7€" },
-      { name: "Pimientos rojos asados", price: "7€" },
-      { name: "Verduras salteadas con salsa mery", price: "7€" },
-      { name: "Servicio de pan (por comensal)", price: "3€" },
-    ],
-  },
-];
-
+  const menuSections = [
+    {
+      title: "Las entradas de sabino",
+      subtitle: "Aperitivos del mar",
+      image: "/images/DSC03028.JPG",
+      items: [
+        { name: "Gilda del norte", price: "4€", unit: "unidad", description: "Anchoa, oliva y guindilla" },
+        { name: "Anchoa en salazón sobre tostada y su emulsión", price: "4€", unit: "unidad", description: "Con aceite de oliva virgen extra" },
+        { name: "Navaja gallega", price: "20€", description: "Recién capturada de las rías gallegas" },
+        { name: "Almejas a la sartén", price: "37€", description: "Con ajo, perejil y vino blanco" },
+        { name: "Berberecho gallego", price: "22€", description: "Al natural con limón" },
+        { name: "Ostra gallega superior", price: "4.5€", unit: "unidad", description: "Servida con mignonette" },
+        { name: "Cola de gamba alistada al ajillo", price: "14€", description: "Con aceite de oliva y guindilla" },
+        { name: "Pulpo asado con puré de patatas", price: "22€", description: "Cocido a la gallega con pimentón" },
+      ],
+    },
+    {
+      title: "Pescados salvajes",
+      subtitle: "Capturas del día",
+      image: "/images/DSC03056.JPG",
+      items: [
+        { name: "Rodaballo", price: "85€/kg", description: "Pescado plano de alta calidad" },
+        { name: "Rey", price: "140€/kg", description: "El más preciado de nuestros mares" },
+        { name: "Mero", price: "75€/kg", description: "Carne firme y sabrosa" },
+        { name: "Merluza de pincho", price: "60€/kg", description: "Capturada artesanalmente" },
+        { name: "Cabra de altura", price: "66€/kg", description: "Pescado de aguas profundas" },
+        { name: "San martín", price: "60€/kg", description: "Sabor intenso del Atlántico" },
+        { name: "Machote", price: "66€/kg", description: "Textura perfecta para la plancha" },
+      ],
+    },
+    {
+      title: "Entrantes de temporada",
+      subtitle: "Sabores estacionales",
+      image: "/images/DSC03077.JPG",
+      items: [
+        { name: "Ensalada de bogavante", price: "29€", description: "Con aguacate y vinagreta cítrica" },
+        { name: "Tomate de la huerta con ventresca, cebolla tierna, morada y piparra", price: "22€", description: "Ingredientes de temporada" },
+        { name: "Ternera con esencia mediterránea", price: "15€", description: "Marinada con hierbas aromáticas" },
+        { name: "Menestra de verduras", price: "12€", description: "Verduras frescas de la huerta" },
+        { name: "Alcachofas con gambas y salsa de crustáceos", price: "16€", description: "Plato tradicional renovado" },
+        { name: "Pimiento de piquillo relleno de frutos del mar", price: "4€", description: "Relleno de mariscos frescos" },
+      ],
+    },
+    {
+      title: "Otras propuestas",
+      subtitle: "Especialidades de la casa",
+      image: "/images/DSC03053.JPG",
+      items: [
+        { name: "Huevos con bogavante sobre patatas paja", price: "36€", description: "Huevos ecológicos con marisco" },
+        { name: "Bacalao ajoarriero o pil-pil", price: "30€", description: "Preparado al estilo tradicional" },
+        { name: "Kokotxas de merluza al pil-pil", price: "36€", description: "La parte más exquisita del pescado" },
+        { name: "Sepia sobre terciopelo de hummus", price: "15€", description: "Fusión mediterránea" },
+        { name: "Salmón ahumado sobre manto de betabel y yogur griego", price: "15€", description: "Ahumado en casa" },
+        { name: "Sopa de pescado", price: "16€", description: "Receta tradicional de la casa" },
+      ],
+    },
+    {
+      title: "Carnes",
+      subtitle: "Selección terrestre",
+      image: "/images/DSC03043.JPG",
+      items: [
+        { name: "Solomillo con salsa de nata y setas, y puré de patatas", price: "24€", description: "Carne premium con guarnición" },
+        { name: "Steak tartar", price: "24€", description: "Preparado en mesa" },
+        { name: "Cochinillo confitado a la vainilla, sobre puré de manzana", price: "22€", description: "Cocción lenta y sabor único" },
+      ],
+    },
+    {
+      title: "Guarniciones",
+      subtitle: "Acompañamientos",
+      image: "/images/DSC03036.JPG",
+      items: [
+        { name: "Patatas fritas", price: "7€", description: "Cortadas artesanalmente" },
+        { name: "Pimientos rojos asados", price: "7€", description: "Asados al horno de leña" },
+        { name: "Verduras salteadas con salsa mery", price: "7€", description: "Verduras frescas del mercado" },
+        { name: "Servicio de pan", price: "3€", unit: "por comensal", description: "Pan artesanal de la casa" },
+      ],
+    },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -93,9 +104,49 @@ const menuSections = [
     }
   };
 
+  const menuItemVariants = {
+    hidden: { x: -30, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 120
+      }
+    }
+  };
+
   return (
     <div className="restaurant-app">
+      {/* Hero Section */}
+      <motion.section 
+        className="hero-section"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2 }}
+      >
+        <div className="hero-overlay"></div>
+        <div className="hero-content">
+          <motion.h1 
+            className="hero-title"
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            Sabores del Mar
+          </motion.h1>
+          <motion.p 
+            className="hero-subtitle"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.7, duration: 0.8 }}
+          >
+            Pescado fresco y mariscos de las mejores capturas
+          </motion.p>
+        </div>
+      </motion.section>
 
+      {/* Menu Section */}
       <motion.section 
         className="menu-section"
         initial={{ opacity: 0 }}
@@ -103,7 +154,7 @@ const menuSections = [
         transition={{ duration: 0.8 }}
       >
         <div className="menu-container">
-          <motion.h1 
+          <motion.h2 
             className="menu-title"
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -113,10 +164,11 @@ const menuSections = [
               delay: 0.2 
             }}
           >
-            Nuestra carta
-          </motion.h1>
+            Nuestra Carta
+          </motion.h2>
           
           <motion.div
+            className="menu-grid"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -124,207 +176,66 @@ const menuSections = [
             {menuSections.map((section, sectionIndex) => (
               <motion.div 
                 key={sectionIndex} 
-                className="menu-category"
+                className="category-card"
                 variants={itemVariants}
+                style={{
+                  backgroundImage: `url(${section.image})`
+                }}
                 whileHover={{ 
-                  y: -5,
+                  scale: 1.02,
                   transition: { duration: 0.3 }
                 }}
               >
-                <motion.h2 
-                  className="category-title"
-                  initial={{ x: -50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ 
-                    delay: sectionIndex * 0.1,
-                    type: "spring",
-                    stiffness: 100
-                  }}
-                >
-                  {section.title}
-                </motion.h2>
-                
-                <motion.div 
-                  className="menu-list"
-                  variants={containerVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {section.items.map((item, itemIndex) => (
-                    <motion.div 
-                      key={itemIndex} 
-                      className="menu-item"
-                      variants={itemVariants}
-                      whileHover={{ 
-                        x: 10,
-                        transition: { duration: 0.3 }
-                      }}
-                    >
-                      <div className="menu-item-content">
-                        <div className="menu-item-name">{item.name}</div>
-                        <div className="menu-item-price">
-                          {item.price} {item.unit && <span className="unit">{item.unit}</span>}
+                <div className="category-overlay"></div>
+                <div className="menu-content">
+                  <motion.div 
+                    className="category-header"
+                    initial={{ y: -30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ 
+                      delay: sectionIndex * 0.1,
+                      duration: 0.8
+                    }}
+                  >
+                    <h3 className="category-title">{section.title}</h3>
+                    <p className="category-subtitle">{section.subtitle}</p>
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="menu-items-grid"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    {section.items.map((item, itemIndex) => (
+                      <motion.div 
+                        key={itemIndex} 
+                        className="menu-item"
+                        variants={menuItemVariants}
+                        whileHover={{ 
+                          y: -5,
+                          transition: { duration: 0.3 }
+                        }}
+                      >
+                        <div className="menu-item-header">
+                          <div className="menu-item-name">{item.name}</div>
+                          <div className="menu-item-price">
+                            {item.price}
+                            {item.unit && <span className="menu-item-unit">{item.unit}</span>}
+                          </div>
                         </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </motion.div>
+                        {item.description && (
+                          <div className="menu-item-description">{item.description}</div>
+                        )}
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </div>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </motion.section>
-
-      <style>{`
-  
-
-        /* Menu Section */
-        .menu-section {
-          padding: 8rem 0 4rem;
-          background: var(--light-bg);
-          min-height: 100vh;
-          font-family: 'Playfair Display', serif;
-          color: var(--text-primary);
-        }
-
-        .menu-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 2rem;
-        }
-
-        .menu-title {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(2.5rem, 5vw, 4rem);
-          font-weight: 300;
-          color: var(--primary);
-          text-align: center;
-          margin-bottom: 3rem;
-          position: relative;
-        }
-
-        .menu-title::after {
-          content: '';
-          position: absolute;
-          bottom: -1rem;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 4rem;
-          height: 2px;
-          background: var(--accent);
-          border-radius: 1px;
-        }
-
-        .menu-category {
-          margin-bottom: 4rem;
-          background: white;
-          border-radius: 16px;
-          padding: 3rem;
-          box-shadow: var(--shadow);
-          border: 1px solid var(--border);
-          transition: all 0.3s ease;
-        }
-
-        .category-title {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(1.5rem, 3vw, 2rem);
-          font-weight: 400;
-          color: var(--primary);
-          margin-bottom: 2rem;
-          text-align: center;
-          position: relative;
-          letter-spacing: 0.05em;
-        }
-
-        .category-title::after {
-          content: '';
-          position: absolute;
-          bottom: -0.5rem;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 2rem;
-          height: 1px;
-          background: var(--light-accent);
-        }
-
-        .menu-list {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 1.5rem;
-        }
-
-        .menu-item {
-          padding: 1.5rem;
-          background: var(--light-bg);
-          border-radius: 12px;
-          border-left: 4px solid var(--accent);
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-          font-weight: 300;
-          color: var(--text-secondary);
-          font-size: 0.95rem;
-        }
-
-        .menu-item::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(135deg, transparent 0%, rgba(39, 174, 96, 0.05) 100%);
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-
-        .menu-item:hover::before {
-          opacity: 1;
-        }
-
-        .menu-item-content {
-          position: relative;
-          z-index: 1;
-        }
-
-        .menu-item-name {
-          font-weight: 500;
-          color: var(--text-primary);
-          font-size: 1rem;
-          margin-bottom: 0.5rem;
-          line-height: 1.4;
-          letter-spacing: 0.03em;
-        }
-
-        .menu-item-price {
-          font-weight: 700;
-          color: var(--accent);
-          font-size: 1.1rem;
-        }
-
-        .unit {
-          font-size: 0.85rem;
-          font-weight: 400;
-          color: var(--text-secondary);
-          margin-left: 0.3rem;
-          font-style: italic;
-        }
-
-        @media (max-width: 768px) {
-          .menu-list {
-            grid-template-columns: 1fr;
-          }
-          .menu-category {
-            padding: 2rem;
-          }
-          .menu-title {
-            font-size: 2.5rem;
-          }
-          .category-title {
-            font-size: 1.5rem;
-          }
-        }
-      `}</style>
     </div>
   );
 };

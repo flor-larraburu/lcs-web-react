@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import '../styles/navbar.css';
+
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,7 +21,7 @@ const Navbar = () => {
 
   const navItems = [
     { href: '/menu', label: 'Carta' },
-    { href: '/wines', label: 'Vinos' },
+    // { href: '/wines', label: 'Vinos' },
     { href: '/about', label: 'Nuestra Historia' },
     { href: '/contact', label: 'Contacto' }
   ];
