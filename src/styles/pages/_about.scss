@@ -1,0 +1,461 @@
+// ===================================
+// ABOUT PAGE - SCSS COMPLETO
+// ===================================
+
+// Loading específico para About
+.loading-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--light-bg);
+  
+  .loading-content {
+    text-align: center;
+    
+    .loading-spinner {
+      width: 3rem;
+      height: 3rem;
+      border: 2px solid var(--border);
+      border-top: 2px solid var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    
+    .loading-text {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Simple header para About
+.about-simple-header {
+  padding: 4rem 0 2rem;
+  background: var(--light-bg);
+  
+  .simple-header-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .simple-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 300;
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+  
+  .simple-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    font-style: italic;
+    margin: 0;
+  }
+}
+
+// Stats específicos para About - Versión Circular
+.about-stats-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.about-stat-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  background: transparent;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+  }
+  
+  .stat-circle-container {
+    position: relative;
+    
+    .stat-circle {
+      transform: rotate(-90deg);
+      filter: drop-shadow(0 4px 8px rgba(74, 144, 164, 0.15));
+    }
+    
+    .stat-circle-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      text-align: center;
+      width: 80px;
+    }
+  }
+  
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin: 0;
+    line-height: 1;
+  }
+  
+  .stat-label-inner {
+    color: var(--text-secondary);
+    font-size: 0.6rem;
+    font-weight: 500;
+    margin: 5;
+    line-height: 1.2;
+    text-align: center;
+  }
+}
+
+// SECCIÓN DE CARDS PARALELAS - LA ESENCIA DEL CANTÁBRICO
+.about-sections {
+  padding: 4rem 0;
+  background-color: var(--light-bg);
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      
+      .accent-text {
+        color: var(--accent);
+        font-style: italic;
+      }
+    }
+    
+    .section-divider {
+      width: 4rem;
+      height: 2px;
+      background: var(--accent);
+      margin: 0 auto;
+      border-radius: 1px;
+    }
+  }
+  
+  // Grid de las tres cards paralelas
+  .about-grid-rectangular {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      
+      // La tercera card ocupa el ancho completo en la segunda fila
+      .about-card-rectangular:nth-child(3) {
+        grid-column: 1 / -1;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      
+      .about-card-rectangular:nth-child(3) {
+        grid-column: auto;
+        max-width: none;
+        margin: 0;
+      }
+    }
+  }
+}
+
+// Diseño individual de cada card
+.about-card-rectangular {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  overflow: hidden;
+  min-height: 350px;
+  
+  // Efecto de borde superior animado
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--light-accent));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+  
+  // Estados hover
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    
+    &::before {
+      transform: scaleX(1);
+    }
+    
+    .about-card-icon {
+      transform: scale(1.1) rotate(5deg);
+      
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+  
+  // Sección del icono
+  .card-icon-section {
+    margin-bottom: 2rem;
+    
+    .about-card-icon {
+      width: 5rem;
+      height: 5rem;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(74, 144, 164, 0.3);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+      
+      // Efecto de brillo
+      &::before {
+        content: '';
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+        background: linear-gradient(135deg, var(--light-accent), var(--accent));
+        border-radius: 50%;
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      .icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        color: white;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+  
+  // Sección del contenido
+  .card-content-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--primary);
+      margin: 0 0 1.5rem 0;
+      line-height: 1.3;
+    }
+    
+    .card-description {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin: 0;
+      flex: 1;
+    }
+  }
+  
+  // Animación de flotación sutil
+  animation: cardFloat 8s ease-in-out infinite;
+  
+  &:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  &:nth-child(2) {
+    animation-delay: 2.5s;
+  }
+  
+  &:nth-child(3) {
+    animation-delay: 5s;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+  
+  // Responsive
+  @media (max-width: 1024px) {
+    padding: 2rem 1.5rem;
+    min-height: 320px;
+    
+    .card-icon-section .about-card-icon {
+      width: 4.5rem;
+      height: 4.5rem;
+      
+      .icon {
+        width: 2.2rem;
+        height: 2.2rem;
+      }
+    }
+    
+    .card-content-section {
+      .card-title {
+        font-size: 1.3rem;
+      }
+      
+      .card-description {
+        font-size: 0.95rem;
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem;
+    min-height: 300px;
+    
+    .card-icon-section {
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    min-height: auto;
+    
+    .card-icon-section .about-card-icon {
+      width: 4rem;
+      height: 4rem;
+      
+      .icon {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+    
+    .card-content-section {
+      .card-title {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      
+      .card-description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+// CTA específico para About
+.about-cta {
+  .about-cta-grid {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+// Responsive adicionales para la sección completa
+@media (max-width: 480px) {
+  .about-simple-header {
+    padding: 3rem 0 1.5rem;
+    
+    .simple-title {
+      font-size: 1.8rem;
+    }
+    
+    .simple-subtitle {
+      font-size: 1rem;
+    }
+  }
+  
+  .about-sections {
+    padding: 3rem 0;
+    
+    .section-header {
+      margin-bottom: 3rem;
+    }
+  }
+  
+  .about-stat-circle {
+    padding: 1rem;
+    
+    .stat-circle-container {
+      svg {
+        width: 300px;
+        height: 300px;
+      }
+      
+      .stat-circle-content {
+        width: 90px;
+      }
+    }
+    
+    .stat-number {
+      font-size: 1.2rem;
+    }
+    
+    .stat-label-inner {
+      font-size: 0.7rem;
+    }
+  }
+}
+
+// Animación de flotación para las cards
+@keyframes cardFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}

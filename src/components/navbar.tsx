@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import '../styles/navbar.css';
+import '../styles/navbar.scss';
 
 
 const Navbar = () => {

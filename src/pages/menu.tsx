@@ -1,7 +1,10 @@
-import { motion } from 'framer-motion';
-import '../styles/_menu.scss'; // Importing the SCSS styles
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import '../styles/pages/_menu.scss';
 
 const RestaurantMenu = () => {
+  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+
   const menuSections = [
     {
       title: "Las entradas de sabino",
@@ -81,13 +84,14 @@ const RestaurantMenu = () => {
     },
   ];
 
+  const closeModal = () => setSelectedCategory(null);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
+        staggerChildren: 0.1
       }
     }
   };
@@ -104,14 +108,28 @@ const RestaurantMenu = () => {
     }
   };
 
-  const menuItemVariants = {
-    hidden: { x: -30, opacity: 0 },
+  const modalVariants = {
+    hidden: { 
+      opacity: 0,
+      scale: 0.8,
+      y: 50
+    },
     visible: {
-      x: 0,
       opacity: 1,
+      scale: 1,
+      y: 0,
       transition: {
         type: "spring",
-        stiffness: 120
+        stiffness: 300,
+        damping: 30
+      }
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      y: 50,
+      transition: {
+        duration: 0.2
       }
     }
   };
@@ -120,7 +138,7 @@ const RestaurantMenu = () => {
     <div className="restaurant-app">
       {/* Hero Section */}
       <motion.section 
-        className="hero-section"
+        className="hero-section-tabs"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2 }}
@@ -133,7 +151,7 @@ const RestaurantMenu = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
-            Sabores del Mar
+            Sabores del <span className="accent-text">Mar</span>
           </motion.h1>
           <motion.p 
             className="hero-subtitle"
@@ -141,101 +159,118 @@ const RestaurantMenu = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            Pescado fresco y mariscos de las mejores capturas
+            Selecciona una categoría para explorar nuestros platos
           </motion.p>
         </div>
       </motion.section>
 
-      {/* Menu Section */}
+      {/* Menu Categories Grid */}
       <motion.section 
-        className="menu-section"
+        className="categories-section"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
       >
-        <div className="menu-container">
+        <div className="categories-container">
           <motion.h2 
-            className="menu-title"
-            initial={{ y: -50, opacity: 0 }}
+            className="section-title"
+            initial={{ y: -30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 100,
-              delay: 0.2 
-            }}
+            transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Nuestra Carta
+            Nuestra <span className="accent-text">Carta</span>
           </motion.h2>
           
           <motion.div
-            className="menu-grid"
+            className="categories-grid"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            {menuSections.map((section, sectionIndex) => (
-              <motion.div 
-                key={sectionIndex} 
-                className="category-card"
+            {menuSections.map((section, index) => (
+              <motion.button
+                key={index}
+                className="category-button"
                 variants={itemVariants}
-                style={{
-                  backgroundImage: `url(${section.image})`
-                }}
+                onClick={() => setSelectedCategory(index)}
                 whileHover={{ 
-                  scale: 1.02,
-                  transition: { duration: 0.3 }
+                  scale: 1.05,
+                  transition: { duration: 0.2 }
                 }}
+                whileTap={{ scale: 0.98 }}
+                style={{ backgroundImage: `url(${section.image})` }}
               >
-                <div className="category-overlay"></div>
-                <div className="menu-content">
-                  <motion.div 
-                    className="category-header"
-                    initial={{ y: -30, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ 
-                      delay: sectionIndex * 0.1,
-                      duration: 0.8
-                    }}
-                  >
-                    <h3 className="category-title">{section.title}</h3>
-                    <p className="category-subtitle">{section.subtitle}</p>
-                  </motion.div>
-                  
-                  <motion.div 
-                    className="menu-items-grid"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    {section.items.map((item, itemIndex) => (
-                      <motion.div 
-                        key={itemIndex} 
-                        className="menu-item"
-                        variants={menuItemVariants}
-                        whileHover={{ 
-                          y: -5,
-                          transition: { duration: 0.3 }
-                        }}
-                      >
-                        <div className="menu-item-header">
-                          <div className="menu-item-name">{item.name}</div>
-                          <div className="menu-item-price">
-                            {item.price}
-                            {item.unit && <span className="menu-item-unit">{item.unit}</span>}
-                          </div>
-                        </div>
-                        {item.description && (
-                          <div className="menu-item-description">{item.description}</div>
-                        )}
-                      </motion.div>
-                    ))}
-                  </motion.div>
+                <div className="category-button-overlay"></div>
+                <div className="category-button-content">
+                  <h3 className="category-button-title">{section.title}</h3>
+                  <p className="category-button-subtitle">{section.subtitle}</p>
                 </div>
-              </motion.div>
+              </motion.button>
             ))}
           </motion.div>
         </div>
       </motion.section>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {selectedCategory !== null && (
+          <motion.div
+            className="modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeModal}
+          >
+            <motion.div
+              className="modal-content"
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              onClick={(e) => e.stopPropagation()}
+              style={{ 
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url(${menuSections[selectedCategory].image})`
+              }}
+            >
+              {/* Modal Close Button */}
+              <button className="modal-close" onClick={closeModal}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </button>
+
+              {/* Modal Items Grid */}
+              <div className="modal-items">
+                <motion.div 
+                  className="modal-items-grid"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {menuSections[selectedCategory].items.map((item, itemIndex) => (
+                    <motion.div
+                      key={itemIndex}
+                      className="modal-item-card"
+                      variants={itemVariants}
+                    >
+                      <div className="card-header">
+                        <h4 className="dish-name">{item.name}</h4>
+                        <span className="dish-price">
+                          {item.price}
+                          {item.unit && <span className="price-unit"> / {item.unit}</span>}
+                        </span>
+                      </div>
+                      {item.description && (
+                        <p className="dish-description">{item.description}</p>
+                      )}
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

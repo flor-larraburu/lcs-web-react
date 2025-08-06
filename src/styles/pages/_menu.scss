@@ -1,0 +1,534 @@
+// ===================================
+// UTILIDADES Y EFECTOS
+// ===================================
+
+// Texto de acento como en el home
+.accent-text {
+  color: var(--accent);
+  font-style: italic;
+}
+
+// ===================================
+// MENU.SCSS - Usando estilos del home
+// ===================================
+
+// Importamos las fuentes del home
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+.restaurant-app {
+  // Usamos exactamente las mismas variables del home
+  --primary: #1e3a5f;
+  --accent: #4a90a4;
+  --light-accent: #87ceeb;
+  --text-primary: #2c3e50;
+  --text-secondary: #64748b;
+  --background: #fefefe;
+  --light-bg: #f8fafc;
+  --dark-bg: #1a2332;
+  --border: #e2e8f0;
+  --overlay: rgba(26, 35, 50, 0.6);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  min-height: 100vh;
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ===================================
+// HERO SECTION
+// ===================================
+.hero-section-tabs {
+  position: relative;
+  height: 50vh;
+  min-height: 350px;
+  max-height: 500px;
+  background: linear-gradient(
+    135deg,
+    rgba(248, 250, 252, 0.95) 0%,
+    rgba(248, 250, 252, 0.85) 30%,
+    rgba(30, 58, 95, 0.4) 100%
+  ), url('/images/DSC03088.JPG') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-attachment: fixed;
+  
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(248, 250, 252, 0.1) 0%,
+      rgba(30, 58, 95, 0.2) 100%
+    );
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 2rem;
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      margin-bottom: 1rem;
+      letter-spacing: 0.01em;
+      color: var(--primary);
+      text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.2),
+        0 4px 8px rgba(0, 0, 0, 0.15);
+      line-height: 1.1;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 300;
+      color: var(--text-secondary);
+      opacity: 0.9;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+// ===================================
+// CATEGORIES SECTION
+// ===================================
+.categories-section {
+  padding: 3rem 0 4rem;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+
+  .categories-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--primary);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4rem;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 1px;
+    }
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+}
+
+// ===================================
+// CATEGORY BUTTONS
+// ===================================
+.category-button {
+  position: relative;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.12),
+    0 3px 8px rgba(0, 0, 0, 0.08);
+
+  &:hover {
+    box-shadow: 
+      0 15px 35px rgba(0, 0, 0, 0.18),
+      0 6px 15px rgba(0, 0, 0, 0.12);
+  }
+
+  .category-button-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(26, 35, 50, 0.4) 0%,
+      rgba(30, 58, 95, 0.5) 100%
+    );
+    transition: all 0.3s ease;
+  }
+
+  &:hover .category-button-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(26, 35, 50, 0.3) 0%,
+      rgba(30, 58, 95, 0.4) 100%
+    );
+  }
+
+  .category-button-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 1.5rem;
+
+    .category-button-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      line-height: 1.2;
+      color: white
+    }
+
+    .category-button-subtitle {
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--light-accent);
+      opacity: 0.95;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+// ===================================
+// MODAL
+// ===================================
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+// ===================================
+// MODAL CLOSE BUTTON - MÁS SIMPLE
+// ===================================
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+}
+
+// ===================================
+// MODAL ITEMS - GLASSMORPHISM
+// ===================================
+.modal-items {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  min-height: 70vh;
+  max-height: 85vh;
+  overflow-y: auto;
+
+  // Scrollbar personalizada más sutil
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+  }
+
+  .modal-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+}
+
+.modal-item-card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+
+    .dish-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: white;
+      line-height: 1.3;
+      flex: 1;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .dish-price {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--light-accent);
+      white-space: nowrap;
+      flex-shrink: 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+      .price-unit {
+        font-size: 0.9rem;
+        font-weight: 400;
+        opacity: 0.9;
+        font-style: italic;
+      }
+    }
+  }
+
+  .dish-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+    font-style: italic;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// ===================================
+// RESPONSIVE DESIGN
+// ===================================
+@media (max-width: 768px) {
+  .hero-section-tabs {
+    height: 45vh;
+    min-height: 300px;
+    background-attachment: scroll;
+  }
+
+  .categories-section {
+    padding: 2.5rem 0 3rem;
+    
+    .categories-container {
+      padding: 0 1rem;
+    }
+  }
+
+  .category-button {
+    height: 200px;
+  }
+
+  .modal-overlay {
+    padding: 1rem;
+  }
+
+  .modal-items {
+    padding: 1.5rem;
+    min-height: 60vh;
+  }
+
+  .modal-item-card {
+    padding: 1.25rem;
+
+    .card-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+
+      .dish-price {
+        align-self: flex-end;
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section-tabs {
+    height: 40vh;
+    min-height: 280px;
+
+    .hero-content {
+      padding: 0 1rem;
+    }
+  }
+
+  .categories-section {
+    padding: 2rem 0 3rem;
+  }
+
+  .category-button {
+    height: 180px;
+    border-radius: 12px;
+  }
+
+  .modal-items {
+    padding: 1rem;
+    min-height: 50vh;
+
+    .modal-items-grid {
+      gap: 0.75rem;
+    }
+  }
+
+  .modal-item-card {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+}
+
+// ===================================
+// EFECTOS ESPECIALES
+// ===================================
+
+// Parallax solo en desktop
+@media (min-width: 769px) {
+  .hero-section-tabs {
+    background-attachment: fixed;
+  }
+}
+
+// Prevenir scroll del body cuando el modal está abierto
+body:has(.modal-overlay) {
+  overflow: hidden;
+}
+
+// Accesibilidad
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    transform: none !important;
+  }
+  
+  .hero-section-tabs {
+    background-attachment: scroll !important;
+  }
+}
+
+// Print styles
+@media print {
+  .modal-overlay {
+    display: none;
+  }
+  
+  .hero-section-tabs {
+    height: 200px;
+    background: var(--light-bg) !important;
+    color: var(--primary) !important;
+    
+    .hero-content * {
+      color: var(--primary) !important;
+      text-shadow: none !important;
+    }
+  }
+
+  .categories-section {
+    background: white !important;
+    
+    .categories-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .category-button {
+      background: var(--slate-100) !important;
+      height: auto !important;
+      padding: 1rem;
+      flex: 1;
+      min-width: 200px;
+      
+      .category-button-overlay {
+        display: none;
+      }
+      
+      .category-button-content * {
+        color: var(--primary) !important;
+        text-shadow: none !important;
+      }
+    }
+  }
+}

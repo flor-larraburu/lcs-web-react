@@ -1,4 +1,4 @@
-import "../styles/_wines.scss";
+import "../styles/pages/_wines.scss";
 
 const Wines = () => {
   return (

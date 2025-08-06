@@ -5,7 +5,6 @@ import About from "./pages/about";
 import Menu from "./pages/menu";
 import Wines from "./pages/wines";
 import Footer from "./components/footer";
-import "./styles/layout.scss"; // Importamos los estilos de layout
 import ContactSection from "./pages/contact";
 
 function App() {
