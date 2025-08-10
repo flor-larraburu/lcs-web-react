@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { MapPin, Mail, Phone, Instagram, Facebook } from 'lucide-react';
+import {  Mail, Phone, Instagram, Facebook } from 'lucide-react';
 import '../styles/footer.scss';
 
 const Footer = () => {
