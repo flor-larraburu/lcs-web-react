@@ -28,8 +28,7 @@ const Footer = () => {
           >
             <p className="footer__text">
               <a href="https://goo.gl/maps/YourGoogleMapsLink" target="_blank" rel="noopener noreferrer" className="footer__link">
-                <MapPin size={16} style={{ marginRight: '6px', display: 'inline' }} />
-                C/ Ejemplo, 12, 46001 Valencia
+                C/ Gregori Mayans, 5, L'Eixample, 46005 València
               </a>
             </p>
             <p className="footer__text">
@@ -52,9 +51,9 @@ const Footer = () => {
               </a>
             </p>
             <p className="footer__text">
-              Diseño por{" "}
+              Diseño por {" "}
               <a href="https://" target="_blank" rel="noopener noreferrer" className="footer__link">
-                Florencia Larraburu
+                  Florencia Larraburu
               </a>
             </p>
           </motion.div>

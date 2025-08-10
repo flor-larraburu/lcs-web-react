@@ -143,6 +143,7 @@ h1 {
 h2 {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 300;
+  
 }
 
 h3 {
@@ -242,6 +243,8 @@ h3 {
   &.light {
     color: white;
   }
+
+
 }
 
 .section-divider {
@@ -619,11 +622,11 @@ h3 {
   }
 }
 
-// Contact - sin padding bottom extra
+// Contact Section - con fondo blanco consistente
 .contact-section {
-  padding: 4rem 0 0;
-  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary) 100%);
-  color: white;
+  padding: 4rem 0;
+  background: white; // Cambiado de var(--light-bg) a white para consistencia
+  color: var(--text-primary);
   
   .contact-grid {
     display: grid;
@@ -640,7 +643,7 @@ h3 {
   .contact-map {
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow);
     
     iframe {
       width: 100%;
@@ -663,7 +666,7 @@ h3 {
     .info-icon {
       width: 1.5rem;
       height: 1.5rem;
-      color: var(--light-accent);
+      color: var(--accent);
       flex-shrink: 0;
       margin-top: 0.25rem;
     }
@@ -674,23 +677,23 @@ h3 {
         font-size: 1.2rem;
         font-weight: 500;
         margin-bottom: 0.5rem;
-        color: white;
+        color: var(--primary);
       }
       
       p, a {
-        color: rgba(255, 255, 255, 0.9);
+        color: var(--text-secondary);
         line-height: 1.5;
         font-size: 0.95rem;
       }
       
       a {
-        color: var(--light-accent);
+        color: var(--accent);
         text-decoration: none;
         font-weight: 500;
         transition: color 0.3s ease;
         
         &:hover {
-          color: white;
+          color: var(--primary);
         }
       }
     }
@@ -701,12 +704,42 @@ h3 {
       margin-bottom: 0.4rem;
       
       strong {
-        color: white;
+        color: var(--primary);
         font-weight: 600;
       }
     }
   }
+
+  // Títulos de sección usan los estilos normales (no .light)
+  .section-title {
+    color: var(--primary);
+  }
+
+  .section-divider {
+    background: var(--accent);
+  }
 }
+  
+  .schedule {
+    p {
+      margin-bottom: 0.4rem;
+      
+      strong {
+        color: var(--primary); // Cambiado de blanco a primary
+        font-weight: 600;
+      }
+    }
+  }
+
+  // Títulos de sección en la contact section ahora usan los estilos normales
+  .section-title {
+    color: var(--primary); // Ya no es .light
+  }
+
+  .section-divider {
+    background: var(--accent); // Ya no es .light
+  }
+
 
 // ===================================
 // RESPONSIVE DESIGN UNIFICADO
