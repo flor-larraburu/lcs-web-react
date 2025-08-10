@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Phone, MapPin, Clock, MessageCircle, Star, ChefHat } from 'lucide-react';
+import { Phone, Clock, MessageCircle, Star, ChefHat } from 'lucide-react';
 import '../styles/pages/_contact.scss';
 
 const ContactSection = () => {
