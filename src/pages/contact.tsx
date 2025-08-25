@@ -246,7 +246,7 @@ const ContactSection = () => {
                 <Phone className="btn-icon" />
                 Reservar Ahora
               </a>
-              <a href="/menu" className="btn-secondary" style={{ color: 'white' }}>
+              <a href="/menu" className="btn-secondary" >
                 Ver Nuestra Carta
               </a>
             </motion.div>
