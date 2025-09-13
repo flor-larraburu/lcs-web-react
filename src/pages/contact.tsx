@@ -20,14 +20,16 @@ const ContactSection = () => {
 
   return (
     <div className="restaurant-home">
-      {/* Hero Section */}
+      {/* Hero Section con Imagen de Fondo */}
       <motion.section 
         className="hero-section contact-hero"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="hero-overlay" />
+        <div className="hero-background">
+          <div className="hero-overlay" />
+        </div>
         <div className="hero-content">
           <motion.div
             initial="hidden"
@@ -78,8 +80,6 @@ const ContactSection = () => {
                 </a>
               </div>
             </motion.div>
-
- 
 
             <motion.div variants={scaleIn} className="service-item contact-card">
               <div className="service-icon">

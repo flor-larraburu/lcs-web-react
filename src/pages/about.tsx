@@ -51,7 +51,7 @@ const About = () => {
       stats: [
         { number: "15+", label: "Años de experiencia", icon: Clock, percentage: 85 },
         { number: "100%", label: "Pescado fresco diario", icon: ChefHat, percentage: 100 },
-        { number: "4.8★", label: "Valoración promedio", icon: Award, percentage: 96 }
+        { number: "4.5★", label: "Valoración promedio", icon: Award, percentage: 96 }
       ]
     });
   }, []);
@@ -96,24 +96,27 @@ const About = () => {
 
   return (
     <div className="restaurant-home">
-      {/* Simple Header */}
+      {/* Header con Imagen de Fondo */}
       <motion.section 
-        className="about-simple-header"
+        className="about-hero-header"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
+        <div className="hero-background">
+          <div className="hero-overlay"></div>
+        </div>
         <div className="container">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerChildren}
-            className="simple-header-content"
+            className="hero-header-content"
           >
-            <motion.h1 variants={fadeInUp} className="simple-title">
+            <motion.h1 variants={fadeInUp} className="hero-title">
               {aboutData.aboutTitle}
             </motion.h1>
-            <motion.p variants={fadeInUp} className="simple-subtitle">
+            <motion.p variants={fadeInUp} className="hero-subtitle">
               {aboutData.heroSubtitle}
             </motion.p>
           </motion.div>
